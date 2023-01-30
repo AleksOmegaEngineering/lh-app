@@ -1,20 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect, useRef } from "react";
+import { Animated, Easing, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import BurgerMenu from "./components/burgerMenu";
 
 export default function App() {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.safeAreaView}>
+      <StatusBar style={{ barStyle: "dark", backgroundColor: "#ffff" }} />
+      <BurgerMenu style = {styles.container}/>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeAreaView:{
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // borderColor: "red",
+    // borderWidth: "5px",
+    alignItems: "flex-start",
+    justifyContent: "flex-start"
+  },
+  container: {
+    marginLeft: "10%",
+    height: 50,
+    width: 50,
+    borderColor: "red",
+    borderWidth: "1px"
   },
 });
