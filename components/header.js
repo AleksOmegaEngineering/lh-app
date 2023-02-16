@@ -16,7 +16,13 @@ export default function Header(props) {
   let [offsetBoth, setOffsetBoth] = useState(new Animated.Value(0));
   let [offsetBottom, setOffsetBottom] = useState(new Animated.Value(0));
   let [color, setColor] = useState(new Animated.Value(0));
-  let [activeScreen2, setActiveScreen2] = useState("User");
+  let [usersColor, setUsersColor] = useState(new Animated.Value(0));
+  let [clientsColor, setClientsColor] = useState(new Animated.Value(0));
+  let [propertiesColor, setPropertiesColor] = useState(new Animated.Value(0));
+  let [issuesColor, setIssuesColor] = useState(new Animated.Value(0));
+  let [inspectionReportsColor, setInspectionReportsColor] = useState(new Animated.Value(0));
+  let [estimatesColor, setEstimatesColor] = useState(new Animated.Value(0));
+  let [activeScreen2, setActiveScreen2] = useState("Users");
   React.useEffect(() => {
     // console.log(`active screen ${activeScreen2}`)
     props.setActiveScreen(activeScreen2)
@@ -31,7 +37,7 @@ export default function Header(props) {
               />
           </View>
           <BurgerMenu fadeValue = {fadeValue} angleTop = {angleTop} angleBottom = {angleBottom} offsetTop = {offsetTop} offsetBoth = {offsetBoth} offsetBottom = {offsetBottom} setFadeValue = {setFadeValue} setAngleTop = {setAngleTop} setAngleBottom = {setAngleBottom} setOffsetTop = {setOffsetTop} setOffsetBoth = {setOffsetBoth} setOffsetBottom = {setOffsetBottom} style = {styles.burgerMenuContainer} menuStatus = {menuStatus} setMenuStatus = {setMenuStatus} color = {color} setColor = {setColor}/>
-          <Menu activeScreen = {activeScreen2} setActiveScreen = {setActiveScreen2} fadeValue={fadeValue2} setFadeValue = {setFadeValue2} preLeft = {preLeft} setPreLeft = {setPreLeft} open={menuStatus}/>
+          <Menu usersColor = {usersColor} clientsColor = {clientsColor} propertiesColor = {propertiesColor} issuesColor = {issuesColor} setusersColor = {setUsersColor} setclientsColor = {setClientsColor} setpropertiesColor = {setPropertiesColor} setissuesColor = {setIssuesColor} setinspectionReportsColor = {setInspectionReportsColor} setestimatesColor = {setEstimatesColor} inspectionReportsColor = {inspectionReportsColor} estimatesColor = {estimatesColor} activeScreen = {activeScreen2} setActiveScreen = {setActiveScreen2} fadeValue={fadeValue2} setFadeValue = {setFadeValue2} preLeft = {preLeft} setPreLeft = {setPreLeft} open={menuStatus}/>
         </View>
     </View> 
   );

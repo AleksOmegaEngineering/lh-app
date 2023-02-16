@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { Animated, Button, Easing, Image, Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function MainCC(props){
+    useEffect(() =>{
+        console.log(props.activeScreen);
+    }, [props.activeScreen])
     return(
         <View style= {[styles.mainCC, props.style]}>
             <View style ={styles.informationContainer}>

@@ -8,16 +8,16 @@ import MainCC from './components/mainContentContainer.js';
 
 export default function App() {
   const [activeScreen, setActiveScreen] = useState("Users");
-  useEffect(() => {
-    // console.log(activeScreen)
-  }, [activeScreen])
+  // useEffect(() => {
+  //   console.log(activeScreen)
+  // }, [activeScreen])
   return (
     <View style = {styles.background}>
       <SafeAreaView style={styles.safeAreaView}>
         <StatusBar style={{ barStyle: "dark", backgroundColor: "#ffff" }} />
         <View style={styles.contentContainer}>
           <Header activeScreen = {activeScreen} setActiveScreen = {setActiveScreen} style={styles.headerStyle}/>
-          <MainCC style={styles.mainContainerStyle}/>
+          <MainCC style={styles.mainContainerStyle} activeScreen = {activeScreen}/>
         </View>
       </SafeAreaView>
     </View>
