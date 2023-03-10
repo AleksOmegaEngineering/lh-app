@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Animated, Button, Easing, Image, Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Users from "./../screens/users.js"
+import Inspection from "./../screens/inspection.js"
 
 export default function MainCC(props){
     let [scrollWidth, setScrollWidth] = useState();
@@ -12,7 +12,7 @@ export default function MainCC(props){
         <View style= {[styles.mainCC, props.style]}>
             <View style ={styles.informationContainer}>
                 <ScrollView onLayout={(event) => { var {x, y, width, height} = event.nativeEvent.layout; setScrollHeight(height); setScrollWidth(width);}} style = {styles.scrollable}>
-                     <Users style={styles.usersContainer}/>
+                     <Inspection style={styles.usersContainer}/>
                 </ScrollView>
             </View>
         </View>
