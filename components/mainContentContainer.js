@@ -11,9 +11,9 @@ export default function MainCC(props){
     return(
         <View style= {[styles.mainCC, props.style]}>
             <View style ={styles.informationContainer}>
-                <ScrollView onLayout={(event) => { var {x, y, width, height} = event.nativeEvent.layout; setScrollHeight(height); setScrollWidth(width);}} style = {styles.scrollable}>
-                     <Inspection style={styles.usersContainer}/>
-                </ScrollView>
+                {/* <ScrollView onLayout={(event) => { var {x, y, width, height} = event.nativeEvent.layout; setScrollHeight(height); setScrollWidth(width);}} style = {styles.scrollable}> */}
+                     <Inspection/>
+                {/* </ScrollView> */}
             </View>
         </View>
     );
@@ -25,24 +25,30 @@ const styles = StyleSheet.create({
     mainCC: {
         height:"80%",
         width: "100%",
+        // borderWidth: 1,
         // backgroundColor: "red",
         zIndex: -3,
-        // borderWidth: 10,
-        // borderColor: "yellow",
         justifyContent: "flex-end",
         alignItems: "center",
     },
     informationContainer: {
+        borderColor: "yellow",
         height: "95%",
         width: "95%",
         backgroundColor: "white",
         borderRadius: "10%"
     },
     scrollable:{
-        borderColor: "red",
-        borderWidth: 2,
+        // borderColor: "red",
+        // borderWidth: 2,
         // height: "100%",
         // width: "100%",
-        // flex: 1
+        flex: 1
     },
+    flatListContainer:{
+        // borderColor: "red",
+        // borderWidth: "5px",
+        height: "100%",
+        width: "100%",
+    }
 })

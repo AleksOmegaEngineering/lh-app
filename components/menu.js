@@ -23,6 +23,7 @@ export default function Menu(props) {
   const AnimatedMenu = () =>{
 
     let usersColor = useRef(new Animated.Value(0)).current;
+    let leftBlackValue = useRef(new Animated.Value(1)).current;
     let clientsColor = useRef(new Animated.Value(0)).current;
     let propertiesColor = useRef(new Animated.Value(0)).current;
     let issuesColor = useRef(new Animated.Value(0)).current;
@@ -53,6 +54,12 @@ export default function Menu(props) {
     React.useEffect(() => {
       if(props.open){
         Animated.sequence([
+          Animated.timing(leftBlackValue, {
+            toValue: 0,
+            duration: 0,
+            easing: Easing.linear,
+            useNativeDriver: false
+          }),
           Animated.timing(fadeValue, {
             toValue: 1,
             duration: 250,
@@ -82,6 +89,12 @@ export default function Menu(props) {
             duration: 500,
             easing: Easing.linear,
             useNativeDriver: false
+          }),
+          Animated.timing(leftBlackValue, {
+            toValue: 1,
+            duration: 0,
+            easing: Easing.linear,
+            useNativeDriver: false
           })
         ]).start();
         props.setFadeValue(fadeValue);
@@ -89,6 +102,10 @@ export default function Menu(props) {
       }
     }, [props.open])
   
+    const newLeftBlackValue = leftBlackValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0%', '120%']
+    });
     const leftValue = preLeft.interpolate({
       inputRange: [0, 1],
       outputRange: ['0%', '50%']
@@ -118,7 +135,7 @@ export default function Menu(props) {
       outputRange: ['white', '#C62E2D']
     });
     return(
-      <Animated.View style={[styles.blackOut, {opacity: fadeValue}]}>
+      <Animated.View style={[styles.blackOut, {opacity: fadeValue}, {left: newLeftBlackValue}]}>
         <Animated.View style={[styles.mainMenuContainer, {left: leftValue}]}>
           <View style = {styles.optionsContainer}>
             <TouchableOpacity onPress={() => {setActiveScreenLocal("Users")}} style={styles.optionContainer}>
@@ -197,38 +214,38 @@ export default function Menu(props) {
 }
 
 const styles = StyleSheet.create({
-    blackOut:{
-        position: "absolute",
-        top: -100,
-        left: 0,
-        transform: [{translateX: -45}],
-        height: "1800%",
-        width: "120%",
-        backgroundColor: "rgba(0, 0, 0, 0.81)",
-        zIndex: 4,
-        flexDirection: "row",
-        alignItems: 'center',
-        justifyContent: "flex-end"
-    },
-    mainMenuContainer:{
-        height: "100%",
-        width: "66%",
-        backgroundColor: "#444545",
-        flexDirection: 'column',
-        justifyContent: "flex-start",
-        alignItems: "center"
-    },
-    optionsContainer:{
-      marginTop: "60%",
-      height: "50%",
-      width: "90%",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      flexDirection: "column",
-      // borderColor: "red",
-      // borderWidth: "3px"
-    },
+  blackOut:{
+    // borderColor: "blue",
+    // borderWidth: "10px",
+    position: "absolute",
+    top: -100,
+    // left: "120%",
+    transform: [{translateX: -45}],
+    height: "1800%",
+    width: "120%",
+    backgroundColor: "rgba(0, 0, 0, 0.81)",
+    zIndex: 4,
+    flexDirection: "row",
+    alignItems: 'center',
+    justifyContent: "flex-end"
+  },
+  mainMenuContainer:{
+    height: "100%",
+    width: "66%",
+    backgroundColor: "#444545",
+    flexDirection: 'column',
+    justifyContent: "flex-start",
+    alignItems: "center"
+  },
+  optionsContainer:{
+    marginTop: "60%",
+    height: "50%",
+    width: "90%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+  },
     optionContainer:{
       flex: 1,
       flexDirection: "row",
@@ -266,4 +283,5 @@ const styles = StyleSheet.create({
       textTransform: "uppercase",
       color: "white"
     }
-});
+  });
+  
